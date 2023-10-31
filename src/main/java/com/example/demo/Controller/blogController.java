@@ -41,7 +41,7 @@ public class blogController {
         return ResponseEntity.ok().body(blog);
     }
     
-    @PostMapping("/Blogs")
+    @PostMapping("/Blog")
     public @Valid Blog createBlog(@Valid @RequestBody Blog blog) {
     	return blogRepository.save(blog);
     }
@@ -72,7 +72,7 @@ public class blogController {
         return response;
     }
     
-    @GetMapping("/byAuthor")
+    @GetMapping("/blog/byAuthor")
     public ResponseEntity<Blog> getBlogByAuthor(@Valid @RequestBody String Author)
     	{
     	Optional<Blog> blogs = blogRepository.findBlogByAuthor(Author);
@@ -85,7 +85,7 @@ public class blogController {
     	}
     }
     
-    @GetMapping("/byTitle")
+    @GetMapping("/blogs/byTitle")
     public ResponseEntity<Blog> getBlogByTitle(@RequestBody String blogTitle) {
     	List<Blog> blogs = blogRepository.findBlogByBlogTitel(blogTitle);
     	
@@ -96,7 +96,7 @@ public class blogController {
     		return ResponseEntity.notFound().build();
     	}
     }
-    @GetMapping("/byContent")
+    @GetMapping("/Blogs/byContent")
     public ResponseEntity<Blog> getBlogByContent(@RequestBody String content) {
     	Optional<Blog> blogs = blogRepository.findBlogByContent(content);
     	
